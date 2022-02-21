@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS georeview;
+
+USE georeview;
+
+CREATE TABLE IF NOT EXISTS users (
+    id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username    VARCHAR (255) NOT NULL,
+    password    VARCHAR (255) NOT NULL,
+    avatar_path VARCHAR (255)
+);
+
+CREATE TABLE IF NOT EXISTS objects (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    obj_name VARCHAR (255) NOT NULL,
+    img_path VARCHAR (255) NOT NULL,
+    geoloc VARCHAR (255) NOT NULL,
+    review VARCHAR (255) NOT NULL
+);
