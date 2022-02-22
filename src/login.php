@@ -24,14 +24,12 @@
         $conn = connexion();
         $query = "SELECT username, password FROM users WHERE username = ${username}";
         $res = $conn->query($query);
-        if (empty($res)) return "Utilisateur introubable";
-
-        $data = $res->fetch(PDO::FETCH_ASSOC);
-
-        return ($data->password != $password) ? "false" : "true";
+        if (empty($res)) {
+            create_user($username, $password, $conn);
+            return "true";
+        } else {
+            $data = $res->fetch(PDO::FETCH_ASSOC);
+            return ($data->password != $password) ? "false" : "true";
+        }
     }
-
-    function set_avatar_file($file) {
-        $conn = connexion();
-    }
-
+?>
