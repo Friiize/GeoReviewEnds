@@ -1,5 +1,5 @@
 <?php
-    require './lib/nusoap.php';
+    require '../lib/nusoap.php';
 
     require 'login.php';
     require 'reviews.php';
@@ -24,5 +24,10 @@
         "get_objs_files",
         array("username" => "xsd:string"),
         array("return" => "xsd:Array")
+    );
+
+    $server->register(
+        "edit_obj_file",
+        array("id" => "xsd:string", "name" => "xsd:string", "path" => "xsd:string", "geoloc" => "xsd:string", "review" => "xsd:string")
     );
 ?>

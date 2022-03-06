@@ -1,23 +1,9 @@
 <?php
     require "connexion.php";
 
-    function create_user ($username, $password) {
-        $conn = connexion();
-        $query = "Select * from users where username = ${username} AND password = ${password}";
-        $res = $conn->query($query);
-
-        $data = [];
-        $index = 0;
-        while($test = $res->fetch(PDO::FETCH_ASSOC)) {
-            $data[$index]=$test;
-            $index=$index+1;
-        }
-
-        if (empty($data)) {
-            return "Le login ou le password sont invalides.";
-        } else {
-            return array_values($data);
-        }
+    function create_user ($username, $password, $conn) {
+        $insert = "INSERT INTO users (username, password) VALUES (${username}, ${password})";
+        $conn->query($insert);
     }
 
     function login ($username, $password) {
